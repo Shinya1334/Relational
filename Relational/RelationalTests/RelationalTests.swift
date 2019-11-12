@@ -30,5 +30,9 @@ class RelationalTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+     func sample_func() {
+        // This is an sample of a function test case.
+        print("sample_func has worked")
+    }
 
 }
