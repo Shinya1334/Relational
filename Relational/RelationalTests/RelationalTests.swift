@@ -2,8 +2,8 @@
 //  RelationalTests.swift
 //  RelationalTests
 //
-//  Created by shinya yoshitaka on 2019/10/31.
-//  Copyright © 2019年 shinya yoshitaka. All rights reserved.
+//  Created by shinya yoshitaka on 2019/11/14.
+//  Copyright © 2019 shinya yoshitaka. All rights reserved.
 //
 
 import XCTest
