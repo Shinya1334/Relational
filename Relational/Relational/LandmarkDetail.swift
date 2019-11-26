@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-
+//app_store_id:974927148
 struct LandmarkDetail: View {
     //部屋の検索先を変更する必要あり.
     @State var showMenu = false
