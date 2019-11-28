@@ -55,14 +55,21 @@ struct LandmarkDetail: View {
 struct MainView: View {
     @Binding var showMenu: Bool
     var body: some View{
-        Button(action:{
-            withAnimation{
-                //フラグを画面遷移に変更する必要あり
-                self.showMenu = true
+        NavigationView{
+            VStack{
+                NavigationLink(destination: SignUpView()){
+                    Text("ログイン画面")
+                }
             }
-        }){
-            Text("部屋の検索")
         }
+//       Button(action:{
+//            withAnimation{
+//                //フラグを画面遷移に変更する必要あり
+//                self.showMenu = true
+//            }
+//        }){
+//            Text("部屋の検索")
+//        }
     }
 }
 
