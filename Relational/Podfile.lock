@@ -59,6 +59,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.3.2):
     - GoogleUtilities/Logger
+  - KeyboardObserving (0.2.1)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -67,6 +68,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - KeyboardObserving
 
 SPEC REPOS:
   trunk:
@@ -80,6 +82,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
+    - KeyboardObserving
     - nanopb
 
 SPEC CHECKSUMS:
@@ -93,8 +96,9 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 8e9b210c97d55fbff306cc5468ff91b9cb32dcf5
   GoogleDataTransportCCTSupport: ef79a4728b864946a8aafdbab770d5294faf3b5f
   GoogleUtilities: 547a86735c6f0ee30ad17e94df4fc21f616b71cb
+  KeyboardObserving: d80b12a71a9ca1111372281eab70d454f9871e06
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: c025ef7cb133760eb66dd801c64410f13517adf5
+PODFILE CHECKSUM: 82fab7c68cc0e2603928a47b0225565ec8fba2ab
 
 COCOAPODS: 1.8.4
