@@ -10,17 +10,18 @@ import SwiftUI
 import Foundation
 import KeyboardObserving
 
+
+
 struct SignUpView: View {
-    
-    
-    
-//       @State var maill = ""
-//       @State var password = ""
-//       @State var isShown = false
+    @EnvironmentObject var session: AuthUser
+
         @State var mailAdress = ""
         @State var password = ""
         @State var verifyPassword = ""
-//
+    
+    func getUser () {
+        session.listen()
+    }
        var body: some View {
         VStack {
             KeyboardObservingView {
@@ -42,10 +43,10 @@ struct SignUpView: View {
             Spacer()
 
             Button(action: {
-
+                
             }) {
                 Text("確認メールを送る")
-            }
+            }.onAppear(perform: getUser)
             Spacer()
             
             }
@@ -99,6 +100,7 @@ struct SignUpView: View {
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView()
+        .environmentObject(AuthUser())
     }
 }
 

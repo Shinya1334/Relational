@@ -13,7 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     var window: UIWindow?
-
+    override init() {
+        super.init()
+        // Firebase関連の機能を使う前に必要
+        FirebaseApp.configure()
+    }
     func application(_ application: UIApplication,
       didFinishLaunchingWithOptions launchOptions:
       [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

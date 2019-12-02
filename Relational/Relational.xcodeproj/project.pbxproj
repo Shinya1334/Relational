@@ -22,6 +22,8 @@
 		65C40D072388C6A50059F047 /* landmarkData.json in Resources */ = {isa = PBXBuildFile; fileRef = 65C40CFA2388C6A40059F047 /* landmarkData.json */; };
 		C432A5334ECD903DA0A742BF /* Pods_Relational.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92D80D6D1A79683B33813E9 /* Pods_Relational.framework */; };
 		E24689EA2389369100E8956A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E24689E92389369000E8956A /* GoogleService-Info.plist */; };
+		E2A809132394FBA2002525FF /* AuthUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A809122394FBA2002525FF /* AuthUser.swift */; };
+		E2A80915239500F1002525FF /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A80914239500F1002525FF /* SignIn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		B92D80D6D1A79683B33813E9 /* Pods_Relational.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Relational.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CDFF9161ECC91690561BE1 /* Pods-Relational.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Relational.debug.xcconfig"; path = "Target Support Files/Pods-Relational/Pods-Relational.debug.xcconfig"; sourceTree = "<group>"; };
 		E24689E92389369000E8956A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E2A809122394FBA2002525FF /* AuthUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUser.swift; sourceTree = "<group>"; };
+		E2A80914239500F1002525FF /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 				65C40CF22388C6A40059F047 /* Resources */,
 				65C40CEB2388C67B0059F047 /* Models */,
 				65262E05237CF146001C1B5C /* AppDelegate.swift */,
+				E2A80914239500F1002525FF /* SignIn.swift */,
 				2305A5ED238CE0FD00018924 /* SignUpView.swift */,
 				65262E07237CF146001C1B5C /* SceneDelegate.swift */,
 				65262E0B237CF14A001C1B5C /* Assets.xcassets */,
@@ -191,6 +196,7 @@
 				65C40CEC2388C67B0059F047 /* Data.swift */,
 				65C40CED2388C67B0059F047 /* User.swift */,
 				65C40CEE2388C67B0059F047 /* Landmark.swift */,
+				E2A809122394FBA2002525FF /* AuthUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 				65262DFF237CF146001C1B5C /* Frameworks */,
 				65262E00237CF146001C1B5C /* Resources */,
 				7340A33B60491D5065F83F5B /* [CP] Embed Pods Frameworks */,
+				D458A2B6D0D0516684781347 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,6 +305,7 @@
 				65262E20237CF14A001C1B5C /* Frameworks */,
 				65262E21237CF14A001C1B5C /* Resources */,
 				301FB3F127A7EE815E4215D7 /* [CP] Embed Pods Frameworks */,
+				F9B55C2C6CC80F332FC38170 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -482,6 +490,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D458A2B6D0D0516684781347 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Relational/Pods-Relational-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Relational/Pods-Relational-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Relational/Pods-Relational-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9B55C2C6CC80F332FC38170 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Relational-RelationalUITests/Pods-Relational-RelationalUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Relational-RelationalUITests/Pods-Relational-RelationalUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Relational-RelationalUITests/Pods-Relational-RelationalUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -493,6 +535,8 @@
 				6580696523860E9300AA994F /* MenuView.swift in Sources */,
 				65262E08237CF146001C1B5C /* SceneDelegate.swift in Sources */,
 				2305A5EE238CE0FD00018924 /* SignUpView.swift in Sources */,
+				E2A80915239500F1002525FF /* SignIn.swift in Sources */,
+				E2A809132394FBA2002525FF /* AuthUser.swift in Sources */,
 				65262E40237D4085001C1B5C /* LandmarkDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
