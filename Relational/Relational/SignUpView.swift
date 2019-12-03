@@ -9,20 +9,23 @@
 import SwiftUI
 import Foundation
 import KeyboardObserving
-
-
+import Firebase
 
 struct SignUpView: View {
-    @EnvironmentObject var session: AuthUser
-
-        @State var mailAdress = ""
-        @State var password = ""
-        @State var verifyPassword = ""
+    var verified = Firebase.Auth.auth().currentUser?.isEmailVerified
+    @State var mailAdress: String = ""
+    @State var password: String = ""
+    @State var verifyPassword: String = ""
     
-    func getUser () {
-        session.listen()
-    }
        var body: some View {
+//        let someNumberProxy = Binding<String>(
+//             get: { String(format: "%.02f", String(self.mailAdress)) },
+//             set: {
+//                if let value = String: $0 {
+//                     self.someNumber = value.doubleValue
+//                 }
+//             }
+//         )
         VStack {
             KeyboardObservingView {
             VStack {
@@ -30,25 +33,37 @@ struct SignUpView: View {
                 TextField("メールアドレスを入力してください", text: $mailAdress)
                     .padding(.top, 30)
                     .padding(.bottom, 40.0)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Text("パスワード")
+                Text("\(mailAdress)")
                 SecureField("パスワードを入力してください", text: $password)
                     .padding(.bottom, 40.0)
                 Text("パスワード(確認用)")
+                Text("\(password)")
                 SecureField("上と同じパスワードを入力してください", text: $verifyPassword)
                     .padding(.bottom, 40.0)
+                
             }
             .padding()
+                
             }
             Spacer()
 
             Button(action: {
-                
-            }) {
+ 
+                Auth.auth().createUser(withEmail: "\(self.mailAdress)", password: "\(self.password)") { (user, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                    else if let user = user {
+                        print(user)
+                    }
+                }
+                               if(!self.verified!){
+                    Firebase.Auth.auth().currentUser!.sendEmailVerification()
+                }
+                }) {
                 Text("確認メールを送る")
-            }.onAppear(perform: getUser)
+            }
             Spacer()
-            
             }
         }
     
@@ -100,7 +115,6 @@ struct SignUpView: View {
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView()
-        .environmentObject(AuthUser())
     }
 }
 
