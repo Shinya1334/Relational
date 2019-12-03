@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-
+import Firebase
 struct SignIn : View {
 
     @State var email: String = ""
@@ -15,30 +15,30 @@ struct SignIn : View {
     @State var loading = false
     @State var error = false
 
-    @EnvironmentObject var session: AuthUser
 
-    func signIn () {
-        loading = true
-        error = false
-        session.signIn(email: email, password: password) { (result, error) in
-            self.loading = false
-            if error != nil {
-                self.error = true
-            } else {
-                self.email = ""
-                self.password = ""
-            }
-        }
-    }
 
     var body: some View {
         VStack {
             TextField("メールアドレスを入力してください", text: $email)
+                .padding(.all, 30)
+
             SecureField("Password", text: $password)
+                .padding(.all, 30)
+
             if (error) {
                 Text("ahhh crap")
             }
-            Button(action: signIn) {
+            Button(action: {
+                Auth.auth().signIn(withEmail: self.email, password: self.password) { (user, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+//                    self.lblCaution.text = "☹️\n\(error.localizedDescription)"
+                }
+                else if let user = user {
+                    print(user)
+//                    self.lblCaution.text = "😍\n Logged in with : \(user.email!)"
+                }
+                }}) {
                 Text("Sign in")
             }
         }

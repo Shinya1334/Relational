@@ -8,15 +8,16 @@
 
 import SwiftUI
 
-class User {
+/*struct User {
     
-    let uid: String
-    let email: String?
-    let displayName: String?
+    var uid: String
+    var email: String?
+    var displayName: String?
     
-    init(uid: String, displayName: String?, email: String?) {
+    init(uid: String, email: String?, displayName: String?) {
         self.uid = uid
         self.email = email
         self.displayName = displayName
     }
 }
+
