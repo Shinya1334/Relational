@@ -57,7 +57,7 @@ struct SignUpView: View {
                         print(user)
                     }
                 }
-                               if(!self.verified!){
+                if(!self.verified!){
                     Firebase.Auth.auth().currentUser!.sendEmailVerification()
                 }
                 }) {

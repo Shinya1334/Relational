@@ -7,8 +7,11 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
 //app_store_id:974927148
 struct LandmarkDetail: View {
+
+    @State var navigationBarBackButtonHidden = true
     //部屋の検索先を変更する必要あり.
     @State var showMenu = false
     var body: some View {
@@ -49,16 +52,27 @@ struct LandmarkDetail: View {
                     .imageScale(.large)
             }
         ))
-        }
+        }.navigationBarBackButtonHidden(true)
+        .navigationBarTitle("", displayMode: .inline)
     }
 }
+//@ObservedObject var session: AuthUser
+
 struct MainView: View {
     @Binding var showMenu: Bool
     var body: some View{
+//        Group {
+//            if (session.session != nil) {
+//            Text("Hello user!")
+//          } else {
+//            SignIn()
+//          }
+//        }
+//        .onAppear(perform: getUser)
         NavigationView{
             VStack{
-                NavigationLink(destination: SignUpView()){
-                    Text("ログイン画面")
+                NavigationLink(destination: ChatScreenUi()){
+                    Text("チャット画面")
                 }
             }
         }
@@ -68,7 +82,7 @@ struct MainView: View {
 //                self.showMenu = true
 //            }
 //        }){
-//            Text("部屋の検索")
+//            Text("チャット")
 //        }
     }
 }
