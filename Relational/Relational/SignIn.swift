@@ -14,16 +14,19 @@ struct SignIn : View {
     @State var password: String = ""
     @State var loading = false
     @State var error = false
-
+    @State var flag = false
 
 
     var body: some View {
+        NavigationView{
         VStack {
             TextField("メールアドレスを入力してください", text: $email)
                 .padding(.all, 30)
+            Text("\(email)")
 
             SecureField("Password", text: $password)
                 .padding(.all, 30)
+            Text("\(password)")
 
             if (error) {
                 Text("ahhh crap")
@@ -35,12 +38,19 @@ struct SignIn : View {
 //                    self.lblCaution.text = "☹️\n\(error.localizedDescription)"
                 }
                 else if let user = user {
-                    print(user)
+                    self.flag = true
 //                    self.lblCaution.text = "😍\n Logged in with : \(user.email!)"
                 }
                 }}) {
                 Text("Sign in")
             }
+            NavigationLink(destination: LandmarkDetail(), isActive: $flag) { EmptyView() }
         }
+    }
+    }
+}
+struct SignIn_Previews: PreviewProvider {
+    static var previews: some View {
+        SignIn()
     }
 }
