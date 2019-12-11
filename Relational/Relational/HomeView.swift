@@ -9,13 +9,28 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var session: Session
+    @ObservedObject private var vm = HomeViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Hello \(self.session.user?.name ?? "")!")
+            Button(action: {
+                _ = self.vm.SignOut()
+                    .sink(receiveCompletion: { err in
+                        self.session.user = nil
+                        self.session.isSignIn = false
+                    }, receiveValue: {})
+            }) {
+                Text("Sign out")
+            }.disabled(!vm.canSignIn)
+        }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(Session(isSignIn: true, user: User(id: "userId", name: "foobar")))
     }
 }

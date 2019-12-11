@@ -6,16 +6,29 @@
 //  Copyright © 2019 shinya yoshitaka. All rights reserved.
 //
 
-import SwiftUI
+import Foundation
+import Combine
 
-struct HomeViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+final class HomeViewModel: ObservableObject  {
+    // MARK: Private
+    private let authProvider: AuthProviderProtocol
+    
+    // MARK: Output
+    @Published private(set) var canSignIn: Bool = true
+    
+    // MARK: Action
+    func SignOut() -> AnyPublisher<Void, Error> {
+        canSignIn = false
+        
+        return authProvider.SignOut()
+            .receive(on: RunLoop.main)
+            .handleEvents(receiveCompletion: { [weak self] completion in
+                self?.canSignIn = true
+            })
+            .eraseToAnyPublisher()
     }
-}
-
-struct HomeViewModel_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeViewModel()
+    
+    init(authProvider: AuthProviderProtocol = AuthProvider()) {
+        self.authProvider = authProvider
     }
 }

@@ -33,11 +33,11 @@ struct SignUpView: View {
                 TextField("メールアドレスを入力してください", text: $mailAdress)
                     .padding(.top, 30)
                     .padding(.bottom, 40.0)
-                Text("\(mailAdress)")
+                //Text("\(mailAdress)")
                 SecureField("パスワードを入力してください", text: $password)
                     .padding(.bottom, 40.0)
                 Text("パスワード(確認用)")
-                Text("\(password)")
+                //Text("\(password)")
                 SecureField("上と同じパスワードを入力してください", text: $verifyPassword)
                     .padding(.bottom, 40.0)
                 

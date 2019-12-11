@@ -6,16 +6,14 @@
 //  Copyright © 2019 shinya yoshitaka. All rights reserved.
 //
 
-import SwiftUI
+import Foundation
+import Combine
 
-struct AuthProviderProtocol: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+enum AuthError: Error {
+    case invalidIdOrPassword
 }
 
-struct AuthProviderProtocol_Previews: PreviewProvider {
-    static var previews: some View {
-        AuthProviderProtocol()
-    }
+protocol AuthProviderProtocol {
+    func SignIn(userId: String, password: String) -> Future<User, Error>
+    func SignOut() -> Future<Void, Error>
 }

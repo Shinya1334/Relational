@@ -7,15 +7,27 @@
 //
 
 import SwiftUI
+import Firebase
 
-struct ContentView: View {
+struct CotentView: View {
+    @EnvironmentObject var session: Session
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if (Auth.auth().currentUser != nil) {
+                LandmarkDetail()
+                    .environmentObject(self.session)
+            } else {
+                SignInView()
+                    .environmentObject(self.session)
+            }
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct CotentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CotentView()
+            .environmentObject(Session())
     }
 }
