@@ -23,9 +23,17 @@
 		6580696523860E9300AA994F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580696423860E9300AA994F /* MenuView.swift */; };
 		65C40D072388C6A50059F047 /* landmarkData.json in Resources */ = {isa = PBXBuildFile; fileRef = 65C40CFA2388C6A40059F047 /* landmarkData.json */; };
 		C432A5334ECD903DA0A742BF /* Pods_Relational.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92D80D6D1A79683B33813E9 /* Pods_Relational.framework */; };
+		E22AF48523A0CDB400E36B01 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C40CED2388C67B0059F047 /* User.swift */; };
 		E24689EA2389369100E8956A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E24689E92389369000E8956A /* GoogleService-Info.plist */; };
 		E2A809132394FBA2002525FF /* AuthUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A809122394FBA2002525FF /* AuthUser.swift */; };
 		E2A80915239500F1002525FF /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A80914239500F1002525FF /* SignIn.swift */; };
+		E2A8EA2B23A0B822000DEDC8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8EA2A23A0B822000DEDC8 /* ContentView.swift */; };
+		E2A8EA2D23A0B8D2000DEDC8 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8EA2C23A0B8D2000DEDC8 /* Session.swift */; };
+		E2A8EA2F23A0BDF1000DEDC8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8EA2E23A0BDF1000DEDC8 /* HomeView.swift */; };
+		E2A8EA3623A0C52B000DEDC8 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8EA3523A0C52B000DEDC8 /* SignInViewModel.swift */; };
+		E2A8EA3823A0C617000DEDC8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8EA3723A0C617000DEDC8 /* HomeViewModel.swift */; };
+		E2A8EA3A23A0C6BF000DEDC8 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8EA3923A0C6BF000DEDC8 /* AuthProvider.swift */; };
+		E2A8EA3C23A0C740000DEDC8 /* AuthProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8EA3B23A0C740000DEDC8 /* AuthProviderProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +103,13 @@
 		E24689E92389369000E8956A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E2A809122394FBA2002525FF /* AuthUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUser.swift; sourceTree = "<group>"; };
 		E2A80914239500F1002525FF /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		E2A8EA2A23A0B822000DEDC8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E2A8EA2C23A0B8D2000DEDC8 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		E2A8EA2E23A0BDF1000DEDC8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E2A8EA3523A0C52B000DEDC8 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		E2A8EA3723A0C617000DEDC8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		E2A8EA3923A0C6BF000DEDC8 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		E2A8EA3B23A0C740000DEDC8 /* AuthProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProviderProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +165,7 @@
 		65262E04237CF146001C1B5C /* Relational */ = {
 			isa = PBXGroup;
 			children = (
+				E2A8EA3423A0C426000DEDC8 /* ViewM */,
 				653E756B23986686006984FB /* ChatScreenUi.swift */,
 				E24689E92389369000E8956A /* GoogleService-Info.plist */,
 				65C40D0D2388C6AC0059F047 /* Supporting Views */,
@@ -157,6 +173,8 @@
 				65C40CEB2388C67B0059F047 /* Models */,
 				65262E05237CF146001C1B5C /* AppDelegate.swift */,
 				E2A80914239500F1002525FF /* SignIn.swift */,
+				E2A8EA2E23A0BDF1000DEDC8 /* HomeView.swift */,
+				E2A8EA2A23A0B822000DEDC8 /* ContentView.swift */,
 				653E756923985794006984FB /* AuthView.swift */,
 				2305A5ED238CE0FD00018924 /* SignUpView.swift */,
 				65262E07237CF146001C1B5C /* SceneDelegate.swift */,
@@ -203,6 +221,9 @@
 				65C40CED2388C67B0059F047 /* User.swift */,
 				65C40CEE2388C67B0059F047 /* Landmark.swift */,
 				E2A809122394FBA2002525FF /* AuthUser.swift */,
+				E2A8EA2C23A0B8D2000DEDC8 /* Session.swift */,
+				E2A8EA3923A0C6BF000DEDC8 /* AuthProvider.swift */,
+				E2A8EA3B23A0C740000DEDC8 /* AuthProviderProtocol.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -258,6 +279,15 @@
 				626B7CAD0F6542D2DCE31586 /* Pods-RelationalTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E2A8EA3423A0C426000DEDC8 /* ViewM */ = {
+			isa = PBXGroup;
+			children = (
+				E2A8EA3523A0C52B000DEDC8 /* SignInViewModel.swift */,
+				E2A8EA3723A0C617000DEDC8 /* HomeViewModel.swift */,
+			);
+			path = ViewM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,13 +567,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E22AF48523A0CDB400E36B01 /* User.swift in Sources */,
 				65262E06237CF146001C1B5C /* AppDelegate.swift in Sources */,
 				6580696523860E9300AA994F /* MenuView.swift in Sources */,
 				65262E08237CF146001C1B5C /* SceneDelegate.swift in Sources */,
 				2305A5EE238CE0FD00018924 /* SignUpView.swift in Sources */,
+				E2A8EA3C23A0C740000DEDC8 /* AuthProviderProtocol.swift in Sources */,
+				E2A8EA3623A0C52B000DEDC8 /* SignInViewModel.swift in Sources */,
 				E2A80915239500F1002525FF /* SignIn.swift in Sources */,
 				E2A809132394FBA2002525FF /* AuthUser.swift in Sources */,
+				E2A8EA2B23A0B822000DEDC8 /* ContentView.swift in Sources */,
+				E2A8EA2D23A0B8D2000DEDC8 /* Session.swift in Sources */,
+				E2A8EA3823A0C617000DEDC8 /* HomeViewModel.swift in Sources */,
 				653E756A23985794006984FB /* AuthView.swift in Sources */,
+				E2A8EA2F23A0BDF1000DEDC8 /* HomeView.swift in Sources */,
+				E2A8EA3A23A0C6BF000DEDC8 /* AuthProvider.swift in Sources */,
 				65262E40237D4085001C1B5C /* LandmarkDetail.swift in Sources */,
 				653E756C23986687006984FB /* ChatScreenUi.swift in Sources */,
 			);
