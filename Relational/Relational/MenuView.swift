@@ -15,36 +15,44 @@ struct MenuView: View {
                 Image(systemName: "turtlerock")
                     .foregroundColor(.gray)
                     .imageScale(.large)
-                Text("ホーム")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+                NavigationLink(destination: HomeView()) {
+                    Text("ホーム")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
             }
             .padding(.top, 100)
             HStack{
                 Image(systemName: "icybay")
                     .foregroundColor(.gray)
                     .imageScale(.large)
-                Text("プロフィール")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+                NavigationLink(destination: HomeView()) {
+                    Text("プロフィール")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
             }
             .padding(.top, 30)
             HStack{
                 Image(systemName: "lakemcdonld")
                     .foregroundColor(.gray)
                     .imageScale(.large)
-                Text("最近使用した部屋")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+                NavigationLink(destination: HomeView()) {
+                    Text("最近使用した部屋")
+                        .foregroundColor(.gray)
+                        .font(.headline)
+                }
             }
             .padding(.top, 30)
         HStack{
             Image(systemName: "umbagog")
                 .foregroundColor(.gray)
                 .imageScale(.large)
-            Text("setting")
-                .foregroundColor(.gray)
-                .font(.headline)
+            NavigationLink(destination: HomeView()) {
+                Text("setting")
+                    .foregroundColor(.gray)
+                    .font(.headline)
+            }
         }
         .padding(.top, 30)
         Spacer()
