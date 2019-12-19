@@ -21,48 +21,48 @@ struct SignInView : View {
     @State var flag = false
     @State var result = ""
 
-
     var body: some View {
         NavigationView{
-        VStack {
-            TextField("User ID", text: $vm.email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(UITextAutocapitalizationType.none)
+            VStack {
+                TextField("User ID", text: $vm.email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(UITextAutocapitalizationType.none)
 
-            SecureField("Password", text: $vm.password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            if (!vm.validationText.isEmpty) {
-                Text(vm.validationText)
-                    .font(.caption)
-                    .foregroundColor(Color.red)
-            }
-
-            Button(action: {
-//                let user = Auth.auth().currentUser;
-                self.result = self.vm.SignIn()
-//                    .sink(receiveCompletion: { completion in
-//                        print("receiveCompletion:", completion)
-//                    }, receiveValue: { user in
-//                        print("userId:", user.id)
-//                        self.session.user = user
-//                        self.session.isSignIn = true
-//                    })
-                let user = Auth.auth().currentUser;
-                if ((user) != nil) {
-                    self.flag = true
-                  } else {
-                    self.flag = false
-                  }
-            }) {
-                Text("Sign in")
-            }
-            NavigationLink(destination: LandmarkDetail(), isActive: $flag ) { EmptyView() }
-            
+                SecureField("Password", text: $vm.password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                if (!vm.validationText.isEmpty) {
+                    Text(vm.validationText)
+                        .font(.caption)
+                        .foregroundColor(Color.red)
+                }
+                Button(action: {
+    //                let user = Auth.auth().currentUser;
+    //                    .sink(receiveCompletion: { completion in
+    //                        print("receiveCompletion:", completion)
+    //                    }, receiveValue: { user in
+    //                        print("userId:", user.id)
+    //                        self.session.user = user
+    //                        self.session.isSignIn = true
+    //                    })
+                    self.result = self.vm.SignIn()
+                    let user = Auth.auth().currentUser;
+                    if ((user) != nil) {
+                        self.flag = true
+                      } else {
+                        self.flag = false
+                      }
+                })
+                {
+                    Text("Sign in")
+                }
+                    NavigationLink(destination: LandmarkDetail(), isActive: $flag){ EmptyView() }
+    //            NavigationLink(destination: LandmarkDetail(), isActive: $flag){
+    //                Text("Sign in")
+    //            }
             }
 //            .disabled(!vm.canSignIn)
-        }.padding()
-        
+        }.padding(.horizontal,20)
     }
 }
 //        NavigationView{

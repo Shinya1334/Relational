@@ -26,7 +26,7 @@ final class SignInViewModel: ObservableObject {
 
     
     // MARK: Action
-    func SignIn() -> ( String)
+    func SignIn() -> (String)
     {
         result = ""
         isBusy = true

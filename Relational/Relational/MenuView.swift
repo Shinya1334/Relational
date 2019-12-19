@@ -26,7 +26,7 @@ struct MenuView: View {
                 Image(systemName: "icybay")
                     .foregroundColor(.gray)
                     .imageScale(.large)
-                NavigationLink(destination: HomeView()) {
+                NavigationLink(destination: ProfileView()) {
                     Text("プロフィール")
                         .foregroundColor(.gray)
                         .font(.headline)
