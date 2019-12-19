@@ -57,8 +57,11 @@ struct SignInView : View {
             }) {
                 Text("Sign in")
             }
-            NavigationLink(destination: LandmarkDetail(), isActive: $flag ) { EmptyView() }
+            NavigationLink(destination: ContentView(), isActive: $flag ) { EmptyView() }
+            .navigationBarHidden(true)
+                .padding( .vertical, 10)
             
+            NavigationLink(destination: SignUpView()) { Text("Create new account") }
             }
 //            .disabled(!vm.canSignIn)
         }.padding()

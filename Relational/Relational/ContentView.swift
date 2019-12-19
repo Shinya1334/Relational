@@ -9,13 +9,14 @@
 import SwiftUI
 import Firebase
 
-struct CotentView: View {
+struct ContentView: View {
     @EnvironmentObject var session: Session
 
     var body: some View {
         VStack {
             if (Auth.auth().currentUser != nil) {
-                LandmarkDetail()
+                //LandmarkDetail()
+                SignInView()
                     .environmentObject(self.session)
             } else {
                 SignInView()
@@ -25,9 +26,9 @@ struct CotentView: View {
     }
 }
 
-struct CotentView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CotentView()
+        ContentView()
             .environmentObject(Session())
     }
 }
