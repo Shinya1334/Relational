@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		136401E142551DC43BD2C763 /* Pods_Relational_RelationalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A929EF71907971DB4A7B74D /* Pods_Relational_RelationalUITests.framework */; };
 		2305A5EE238CE0FD00018924 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2305A5ED238CE0FD00018924 /* SignUpView.swift */; };
+		231426B923C6C6B900762883 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231426B823C6C6B800762883 /* SearchBarView.swift */; };
 		51065CD881B989AB232C634D /* Pods_RelationalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095EBC2F60F5A56D281B9258 /* Pods_RelationalTests.framework */; };
 		65262E06237CF146001C1B5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65262E05237CF146001C1B5C /* AppDelegate.swift */; };
 		65262E08237CF146001C1B5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65262E07237CF146001C1B5C /* SceneDelegate.swift */; };
@@ -57,6 +58,7 @@
 		095EBC2F60F5A56D281B9258 /* Pods_RelationalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RelationalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B6D5FB1EB56315B52BD0F2C /* Pods-Relational-RelationalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Relational-RelationalUITests.release.xcconfig"; path = "Target Support Files/Pods-Relational-RelationalUITests/Pods-Relational-RelationalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2305A5ED238CE0FD00018924 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		231426B823C6C6B800762883 /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		544AB574E35D622D8AE1DE31 /* Pods-Relational-RelationalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Relational-RelationalUITests.debug.xcconfig"; path = "Target Support Files/Pods-Relational-RelationalUITests/Pods-Relational-RelationalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		626B7CAD0F6542D2DCE31586 /* Pods-RelationalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RelationalTests.release.xcconfig"; path = "Target Support Files/Pods-RelationalTests/Pods-RelationalTests.release.xcconfig"; sourceTree = "<group>"; };
 		65262E02237CF146001C1B5C /* Relational.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relational.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +178,7 @@
 				65262E05237CF146001C1B5C /* AppDelegate.swift */,
 				E2A80914239500F1002525FF /* SignIn.swift */,
 				E272A18823AA592500C2E747 /* ProfileView.swift */,
+				231426B823C6C6B800762883 /* SearchBarView.swift */,
 				E272A18A23AA91BD00C2E747 /* HeaderProfileView.swift */,
 				E2A8EA2E23A0BDF1000DEDC8 /* HomeView.swift */,
 				E2A8EA2A23A0B822000DEDC8 /* ContentView.swift */,
@@ -581,9 +584,8 @@
 				E2A80915239500F1002525FF /* SignIn.swift in Sources */,
 				E2A809132394FBA2002525FF /* AuthUser.swift in Sources */,
 				E2A8EA2B23A0B822000DEDC8 /* ContentView.swift in Sources */,
-				E272A18923AA592500C2E747 /* ProfileView.swift in Sources */,
+				231426B923C6C6B900762883 /* SearchBarView.swift in Sources */,
 				E2A8EA2D23A0B8D2000DEDC8 /* Session.swift in Sources */,
-				E272A18B23AA91BD00C2E747 /* HeaderProfileView.swift in Sources */,
 				E2A8EA3823A0C617000DEDC8 /* HomeViewModel.swift in Sources */,
 				653E756A23985794006984FB /* AuthView.swift in Sources */,
 				E2A8EA2F23A0BDF1000DEDC8 /* HomeView.swift in Sources */,
