@@ -55,6 +55,7 @@ struct LandmarkDetail: View {
         }.navigationBarBackButtonHidden(true)
         .navigationBarTitle("", displayMode: .inline)
     }
+
 }
 //@ObservedObject var session: AuthUser
 

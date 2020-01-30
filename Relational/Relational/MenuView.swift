@@ -7,8 +7,11 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct MenuView: View {
+    @State var cuuser = Auth.auth().currentUser
+    @State var user = Auth.auth().currentUser?.displayName
     var body: some View {
         VStack(alignment: .leading) {
             HStack{
@@ -16,7 +19,7 @@ struct MenuView: View {
                     .foregroundColor(.gray)
                     .imageScale(.large)
                 NavigationLink(destination: HomeView()) {
-                    Text("ホーム")
+                    Text("\(user!)")
                         .foregroundColor(.gray)
                         .font(.headline)
                 }

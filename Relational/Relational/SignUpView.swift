@@ -13,11 +13,14 @@ import Firebase
 
 struct SignUpView: View {
     var verified = Firebase.Auth.auth().currentUser?.isEmailVerified
+    @State var username: String = ""
     @State var mailAdress: String = ""
     @State var password: String = ""
     @State var verifyPassword: String = ""
+    @State var flag: Bool = false
     
        var body: some View {
+        NavigationView{
 //        let someNumberProxy = Binding<String>(
 //             get: { String(format: "%.02f", String(self.mailAdress)) },
 //             set: {
@@ -27,13 +30,27 @@ struct SignUpView: View {
 //             }
 //         )
         VStack {
+            
             KeyboardObservingView {
             VStack {
+                
+                Text("アカウントを作成")
+                    .bold()
+                    .foregroundColor(.black)
+                    .font(.largeTitle)
+                
+                Text("ユーザーネーム")
+                    .padding(.top, 50)
+                TextField("ユーザーネームを入力してください", text: $username)
+                    //.padding(.top, 40)
+                    .padding(.bottom, 40.0)
+
                 Text("メールアドレス")
                 TextField("メールアドレスを入力してください", text: $mailAdress)
-                    .padding(.top, 30)
+                    //.padding(.top, 30)
                     .padding(.bottom, 40.0)
                 //Text("\(mailAdress)")
+                Text("パスワード")
                 SecureField("パスワードを入力してください", text: $password)
                     .padding(.bottom, 40.0)
                 Text("パスワード(確認用)")
@@ -48,13 +65,20 @@ struct SignUpView: View {
             Spacer()
 
             Button(action: {
- 
                 Auth.auth().createUser(withEmail: "\(self.mailAdress)", password: "\(self.password)") { (user, error) in
                     if let error = error {
                         print(error.localizedDescription)
                     }
                     else if let user = user {
-                        print(user)
+                        let changeRequest = user.user.createProfileChangeRequest()
+                        changeRequest.displayName = self.username
+                        self.flag = true
+                        changeRequest.commitChanges { (error) in
+                            if let error = error{
+                                print(error.localizedDescription)
+                            }else{
+                            }
+                        }
                     }
                 }
                 if(!self.verified!){
@@ -63,9 +87,13 @@ struct SignUpView: View {
                 }) {
                 Text("確認メールを送る")
             }
+            NavigationLink(destination: ContentView(), isActive: $flag ) { EmptyView()
+            }
             Spacer()
             }
         }
+        
+    }
     
     
 //           VStack {

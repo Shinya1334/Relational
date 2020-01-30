@@ -15,11 +15,14 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if (Auth.auth().currentUser != nil) {
-                //LandmarkDetail()
-                SignInView()
+//                LandmarkDetail()
+//                SignInView()
+                SignUpView()
                     .environmentObject(self.session)
             } else {
+                //SearchBarView()
                 SignInView()
+                //SignUpView()
                     .environmentObject(self.session)
             }
         }
