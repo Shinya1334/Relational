@@ -15,9 +15,9 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if (Auth.auth().currentUser != nil) {
-//                LandmarkDetail()
+                LandmarkDetail()
 //                SignInView()
-                SignUpView()
+//                SignUpView()
                     .environmentObject(self.session)
             } else {
                 //SearchBarView()

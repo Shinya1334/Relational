@@ -185,8 +185,8 @@
 				653E756923985794006984FB /* AuthView.swift */,
 				2305A5ED238CE0FD00018924 /* SignUpView.swift */,
 				65262E07237CF146001C1B5C /* SceneDelegate.swift */,
-				65262E0B237CF14A001C1B5C /* Assets.xcassets */,
 				65262E10237CF14A001C1B5C /* LaunchScreen.storyboard */,
+				65262E0B237CF14A001C1B5C /* Assets.xcassets */,
 				65262E13237CF14A001C1B5C /* Info.plist */,
 				65262E0D237CF14A001C1B5C /* Preview Content */,
 				65262E3F237D4085001C1B5C /* LandmarkDetail.swift */,
@@ -759,13 +759,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Relational/Preview Content\"";
+				DEVELOPMENT_TEAM = B2299NJSRX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Relational/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = swife.demo.Relational;
+				PRODUCT_BUNDLE_IDENTIFIER = swift.demo.Relational;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -779,13 +781,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Relational/Preview Content\"";
+				DEVELOPMENT_TEAM = B2299NJSRX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Relational/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = swife.demo.Relational;
+				PRODUCT_BUNDLE_IDENTIFIER = swift.demo.Relational;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
