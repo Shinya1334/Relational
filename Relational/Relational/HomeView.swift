@@ -210,30 +210,23 @@ struct ChatView : View {
             }
             
             HStack{
-                
-                TextField("Enter Message", text: self.$txt).textFieldStyle(RoundedBorderTextFieldStyle())
-                
+                TextField("Enter Message", text: self.$txt)
+                    .foregroundColor(Color.gray)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 Button(action: {
-                    
                     sendMsg(user: UserDefaults.standard.value(forKey: "UserName") as! String, date: Date(), msg: self.txt,room: self.room)
-                    
                     self.txt = ""
-                    
                 }) {
-                    
                     Text("Send")
                 }
             }
-            .navigationBarTitle("\(self.room)",displayMode: .inline).background(NavigationConfigurator { nc in
-                nc.navigationBar.barTintColor = .blue
-                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]})
+            .navigationBarTitle("\(self.room)",displayMode: .inline)
                 .navigationBarItems(leading: Button(action: {
                     self.chat.toggle()
                 }, label: {
                     Image(systemName: "arrow.left").resizable().frame(width: 20, height: 15)
                 }))
         }.padding()
-            .navigationViewStyle(StackNavigationViewStyle())
         .onAppear {
         
             self.getMsgs(room:self.room)
@@ -244,11 +237,6 @@ struct ChatView : View {
     func getMsgs(room: String){
         
         let db = Firestore.firestore()
-        
-        _ = Auth.auth().currentUser?.uid
-        
-        db.collection("users")
-        
         db.collection("room").document("\(room)").collection("msg").order(by: "date", descending: false).addSnapshotListener { (snap, err) in
             
             if err != nil{
