@@ -354,14 +354,18 @@ PODS:
   - SDWebImage (5.3.2):
     - SDWebImage/Core (= 5.3.2)
   - SDWebImage/Core (5.3.2)
+  - SDWebImageSwiftUI (0.10.3):
+    - SDWebImage (~> 5.3)
 
 DEPENDENCIES:
   - Firebase
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
+  - Firebase/Storage
   - FirebaseUI
   - KeyboardObserving
+  - SDWebImageSwiftUI
 
 SPEC REPOS:
   trunk:
@@ -395,6 +399,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - SDWebImage
+    - SDWebImageSwiftUI
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -427,7 +432,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   SDWebImage: 6ac2eb96571bff96ecde31a987172c5934a0eb7d
+  SDWebImageSwiftUI: 52a2dda1f76e2e5bf0b5ea4c0831737358656905
 
-PODFILE CHECKSUM: d1d7235682d282b721141f28144a99a2b7bbaa00
+PODFILE CHECKSUM: 795911cad8f6247d2156e2f0138792ba7d159287
 
 COCOAPODS: 1.8.4
