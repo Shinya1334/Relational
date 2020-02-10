@@ -47,46 +47,64 @@ struct SignUpView: View {
         
         VStack {
             
+            Text("Sign Up")
+                .fontWeight(.heavy).font(.largeTitle).padding([.top,.bottom], 30)
             
             VStack(spacing: 10) {
                 
-                
-                Text("Email").font(.title).fontWeight(.thin).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
-                
-                TextField("user@domain.com", text: $emailAddress).textContentType(.emailAddress)
-                
-                Text("Password").font(.title).fontWeight(.thin)
+                Text("Email").font(.title).fontWeight(.thin)
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
                 
-                SecureField("Enter a password", text: $password)
-                TextField("displayname", text: $username)
-                
-                Toggle(isOn: $agreeCheck)
-                {
-                    Text("Agree to the Terms and Condition").fontWeight(.thin)
+                    TextField("user@domain.com", text: $emailAddress).textContentType(.emailAddress)
                     
-                }.frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
-                
-                Button(action: {
+                    Divider()
+                VStack{
+
+                    Text("Password").font(.title).fontWeight(.thin)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
                     
-                    if(self.agreeCheck){
-                        print("Printing outputs" + self.emailAddress, self.password  )
-                        self.shouldAnimate = true
-                        self.sayHelloWorld(email:self.emailAddress, password:self.password, username: self.username)
-                    }
-                    else{
-                        self.errorText = "Please Agree to the Terms and Condition"
-                    }
-                }) {
+                    SecureField("Enter a password", text: $password)
                     
-                    Text("Sign Up")
+                    Divider()
+                    VStack{
+                    Text("displayName").font(.title).fontWeight(.thin)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
                     
+                    TextField("displayname", text: $username)
+                        Divider()
+                        .padding(.bottom)
+                    
+                    
+                    Toggle(isOn: $agreeCheck)
+                    {
+                        Text("Agree to the Terms and Condition").fontWeight(.thin)
+                        
+                    }.frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
+                    
+                    Button(action: {
+                        
+                        if(self.agreeCheck){
+                            print("Printing outputs" + self.emailAddress, self.password  )
+                            self.shouldAnimate = true
+                            self.SignUp(email:self.emailAddress, password:self.password, username: self.username)
+                        }
+                        else{
+                            self.errorText = "Please Agree to the Terms and Condition"
+                        }
+                    }) {
+                        
+                        Text("Sign Up").foregroundColor(.white).frame(width: UIScreen.main.bounds.width - 120).padding()
+                        
+                    }.background(Color("SignUp_color"))
+                    .clipShape(Capsule())
+                    .padding(.top, 45)
+                    
+                        Text(errorText).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading).foregroundColor(.red)
+                        .padding(10)
+                    
+                    actIndSignup(shouldAnimate: self.$shouldAnimate)
                 }
-                
-                Text(errorText).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
-                
-                actIndSignup(shouldAnimate: self.$shouldAnimate)
-                
+                }
                 Spacer()
                 
             }.padding(10)
@@ -99,7 +117,7 @@ struct SignUpView: View {
     }
     
     
-    func sayHelloWorld(email: String, password: String, username: String) {
+    func SignUp(email: String, password: String, username: String) {
         let db = Firestore.firestore()
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
