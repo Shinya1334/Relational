@@ -56,29 +56,40 @@ struct SignIn: View {
     
     var body: some View {
         
-        VStack {            
+        VStack {
+            
+            Text("Sign In")
+                .fontWeight(.heavy).font(.largeTitle).padding([.top,.bottom], 30)
+            
             VStack(spacing: 10) {
+                
                 Text("Email").font(.title).fontWeight(.thin).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
                 
                 TextField("user@domain.com", text: $emailAddress).textContentType(.emailAddress)
                 
-                Text("Password").font(.title).fontWeight(.thin)
-                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
-                
-                
-                SecureField("Enter a password", text: $password)
-                
-                Button(action: {
+                Divider()
+                VStack{
+                    Text("Password").font(.title).fontWeight(.thin)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
                     
-                    self.shouldAnimate = true
-                    self.signIn(email:self.emailAddress, password:self.password)
+                    SecureField("Enter a password", text: $password)
                     
+                    Divider()
                     
+                    Button(action: {
+                        
+                        self.shouldAnimate = true
+                        self.signIn(email:self.emailAddress, password:self.password)
+                        
+                    }
+                    ) {
+                        
+                        Text("Sign In").foregroundColor(.white).frame(width: UIScreen.main.bounds.width - 120).padding()
+                        
+                    }.background(Color("SignUp_color"))
+                        .clipShape(Capsule())
+                        .padding(.top, 45)
                 }
-                ) {
-                    Text("Sign In")
-                }
-                
                 
                 Button(action: {
                     
@@ -92,15 +103,15 @@ struct SignIn: View {
                         self.showPasswordAlert.toggle()
                         
                     }
-                    
-                    
                 }
                 ) {
-                    Text("Forgot Password")
-                }
+                    
+                    Text("Forgot Password?")
+                    
+                }.padding(20)
                 
                 
-                Text(errorText).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
+                Text(errorText).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading).foregroundColor(.red)
                 
                 
                 actIndSignin(shouldAnimate: self.$shouldAnimate)
