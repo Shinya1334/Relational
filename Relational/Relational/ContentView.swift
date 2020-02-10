@@ -44,28 +44,37 @@ struct ContentView: View {
             else {
                 VStack {
                     Spacer()
+
                     VStack(spacing:20) {
                         
-                        Button(action: {self.signUpIsPresent = true}){
-                            Text("Sign Up")
-                            
-                        }.sheet(isPresented: self.$signUpIsPresent){
-                            
-                            SignUpView()
-                            
-                        }
-                        
+                        Image("icon").resizable().frame(width: 100, height: 100).padding(.top,60)
                         Button(action: {self.signInIsPresent = true}){
                             
-                            Text("Sign In")
+                            Text("Sign In").foregroundColor(.white).frame(width: UIScreen.main.bounds.width - 120).padding()
                             
-                        }.sheet(isPresented: $signInIsPresent) {
+                        }.background(Color("thin_blue"))
+                        .clipShape(Capsule())
+                            .padding(.top, 45)
+
+                        .sheet(isPresented: $signInIsPresent) {
                             
                             SignIn(onDismiss:{
                                 self.viewState = CGSize(width: screenWidth, height: 0)
                                 self.MainviewState = CGSize(width: 0, height: 0)
                                 
-                            })}}
+                            })}
+                        Text("or")
+                        Button(action: {self.signUpIsPresent = true}){
+                            Text("Sign Up").foregroundColor(.white).frame(width: UIScreen.main.bounds.width - 120).padding()
+                            
+                        }.background(Color("thin_blue"))
+                        .clipShape(Capsule())
+                        .sheet(isPresented: self.$signUpIsPresent){
+                            SignUpView()
+                        }
+                    }
+                    LinearGradient(gradient: Gradient(colors: [.white, .yellow]), startPoint: .top, endPoint: .bottom)
+                         .edgesIgnoringSafeArea(.all)
                     Spacer()
                     
                 }.edgesIgnoringSafeArea(.top).edgesIgnoringSafeArea(.bottom)
