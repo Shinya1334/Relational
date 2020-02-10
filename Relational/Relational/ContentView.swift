@@ -42,7 +42,6 @@ struct ContentView: View {
             }
                 
             else {
-                
                 VStack {
                     Spacer()
                     VStack(spacing:20) {

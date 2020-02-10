@@ -11,8 +11,11 @@ struct HomeView : View {
     @State var uid = ""
     @State var name = ""
     @State var room = ""
+    @State private var useYellowBackground = false
+
     var body : some View{
         ZStack{
+            Color("bg").edgesIgnoringSafeArea(.top)
             NavigationLink(destination: ChatView(name: myname, room:self.room, chat: self.$chat), isActive: self.$chat) {
                 Text("")
         }
@@ -24,6 +27,7 @@ struct HomeView : View {
                     VStack(spacing: 12){
                             ForEach(datas.rooms){i in
                                 Button(action:{
+                                    self.useYellowBackground.toggle()
                                     self.room = i.id
                                     self.chat.toggle()
                                 }){
@@ -62,10 +66,8 @@ struct RecentCellView : View {
             VStack{
 
                 HStack{
-                    
                     VStack(alignment: .leading, spacing: 6) {
-                        
-                        Text(name).foregroundColor(.black)
+                        Text(name).foregroundColor(.black).background(Color("bg"))
                     }
                     
                     Spacer()
@@ -196,21 +198,10 @@ struct ChatView : View {
 
                                 if i.user == UserDefaults.standard.value(forKey: "UserName") as! String{
                                 MsgRow(msg: i.msg, myMsg: true, user: i.user)
-                                    
-//                                    Text(i.msg)
-//                                        .padding()
-//                                        .background(Color.blue)
-//                                        .clipShape(ChatBubble(mymsg: true))
-//                                        .foregroundColor(.black)
+    
                                 }
                                 else{
                                     MsgRow(msg: i.msg, myMsg: false, user: i.user)
-
-//                                    Text(i.msg).padding().background(Color.green).clipShape(ChatBubble(mymsg: false)).foregroundColor(.black)
-//                                            Text(i.user)
-//
-//                                    Spacer()
-//                                }
                             }
 
                         }
@@ -219,21 +210,16 @@ struct ChatView : View {
             }
             
             HStack{
-                
-                TextField("Enter Message", text: self.$txt).textFieldStyle(RoundedBorderTextFieldStyle())
-                
+                TextField("Enter Message", text: self.$txt)
+                    .foregroundColor(Color.gray)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 Button(action: {
-                    
                     sendMsg(user: UserDefaults.standard.value(forKey: "UserName") as! String, date: Date(), msg: self.txt,room: self.room)
-                    
                     self.txt = ""
-                    
                 }) {
-                    
                     Text("Send")
                 }
             }
-            
             .navigationBarTitle("\(self.room)",displayMode: .inline)
                 .navigationBarItems(leading: Button(action: {
                     self.chat.toggle()
@@ -251,11 +237,6 @@ struct ChatView : View {
     func getMsgs(room: String){
         
         let db = Firestore.firestore()
-        
-        _ = Auth.auth().currentUser?.uid
-        
-        db.collection("users")
-        
         db.collection("room").document("\(room)").collection("msg").order(by: "date", descending: false).addSnapshotListener { (snap, err) in
             
             if err != nil{
@@ -373,17 +354,31 @@ struct MsgRow : View {
 
     var body : some View{
         HStack{
-
+            Group{
             if myMsg{
                 Spacer()
-                Text(msg).padding(8).background(Color.red).clipShape(ChatBubble(mymsg: myMsg))
+                Text(msg).padding(8).background(Color("thin_blue")).clipShape(ChatBubble(mymsg: myMsg))
                     .foregroundColor(.black)
             }else{
                 Text(msg).padding(8).background(Color.green).clipShape(ChatBubble(mymsg: myMsg))
                 .foregroundColor(.black)
-                Text(user).foregroundColor(.gray)
+                Text(user).font(.system(size: 10)).foregroundColor(.gray)
                 Spacer()
+            }
             }
         }
     }
+}
+struct NavigationConfigurator: UIViewControllerRepresentable {
+    var configure: (UINavigationController) -> Void = { _ in }
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
+        UIViewController()
+    }
+    func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<NavigationConfigurator>) {
+        if let nc = uiViewController.navigationController {
+            self.configure(nc)
+        }
+    }
+
 }
