@@ -1,148 +1,164 @@
-//
-//  LoginView.swift
-//  Relational
-//
-//  Created by 安座間一喜 on 2019/11/26.
-//  Copyright © 2019 shinya yoshitaka. All rights reserved.
-//
-
 import SwiftUI
-import Foundation
-import KeyboardObserving
 import Firebase
 
-struct SignUpView: View {
-    var verified = Firebase.Auth.auth().currentUser?.isEmailVerified
-    @State var username: String = ""
-    @State var mailAdress: String = ""
-    @State var password: String = ""
-    @State var verifyPassword: String = ""
-    @State var flag: Bool = false
+
+struct actIndSignup: UIViewRepresentable {
+    @Binding var shouldAnimate: Bool
     
-       var body: some View {
-        NavigationView{
-//        let someNumberProxy = Binding<String>(
-//             get: { String(format: "%.02f", String(self.mailAdress)) },
-//             set: {
-//                if let value = String: $0 {
-//                     self.someNumber = value.doubleValue
-//                 }
-//             }
-//         )
+    func makeUIView(context: Context) -> UIActivityIndicatorView {
+        return UIActivityIndicatorView()
+    }
+    
+    func updateUIView(_ uiView: UIActivityIndicatorView,
+                      context: Context) {
+        if self.shouldAnimate {
+            uiView.startAnimating()
+        } else {
+            uiView.stopAnimating()
+        }
+    }
+}
+struct SignUpView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    @State var emailAddress: String = ""
+    @State var username: String = ""
+    @State var password: String = ""
+    @State var agreeCheck: Bool = false
+    @State var errorText: String = ""
+    @State private var showAlert = false
+    @State private var shouldAnimate = false
+    
+    var alert: Alert {
+        
+        Alert(title: Text("Verify your Email ID"), message: Text("Please click the link in the verification email sent to you"), dismissButton: .default(Text("Dismiss")){
+            
+            self.presentationMode.wrappedValue.dismiss()
+            self.emailAddress = ""
+            self.password = ""
+            self.username = ""
+            self.agreeCheck = false
+            self.errorText = ""
+            
+            })
+    }
+    
+    var body: some View {
+        
         VStack {
             
-            KeyboardObservingView {
-            VStack {
+            
+            VStack(spacing: 10) {
                 
-                Text("アカウントを作成")
-                    .bold()
-                    .foregroundColor(.black)
-                    .font(.largeTitle)
                 
-                Text("ユーザーネーム")
-                    .padding(.top, 50)
-                TextField("ユーザーネームを入力してください", text: $username)
-                    //.padding(.top, 40)
-                    .padding(.bottom, 40.0)
-
-                Text("メールアドレス")
-                TextField("メールアドレスを入力してください", text: $mailAdress)
-                    //.padding(.top, 30)
-                    .padding(.bottom, 40.0)
-                //Text("\(mailAdress)")
-                Text("パスワード")
-                SecureField("パスワードを入力してください", text: $password)
-                    .padding(.bottom, 40.0)
-                Text("パスワード(確認用)")
-                //Text("\(password)")
-                SecureField("上と同じパスワードを入力してください", text: $verifyPassword)
-                    .padding(.bottom, 40.0)
+                Text("Email").font(.title).fontWeight(.thin).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
                 
-            }
-            .padding()
+                TextField("user@domain.com", text: $emailAddress).textContentType(.emailAddress)
                 
-            }
-            Spacer()
-
-            Button(action: {
-                Auth.auth().createUser(withEmail: "\(self.mailAdress)", password: "\(self.password)") { (user, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
+                Text("Password").font(.title).fontWeight(.thin)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
+                
+                SecureField("Enter a password", text: $password)
+                TextField("displayname", text: $username)
+                
+                Toggle(isOn: $agreeCheck)
+                {
+                    Text("Agree to the Terms and Condition").fontWeight(.thin)
+                    
+                }.frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
+                
+                Button(action: {
+                    
+                    if(self.agreeCheck){
+                        print("Printing outputs" + self.emailAddress, self.password  )
+                        self.shouldAnimate = true
+                        self.sayHelloWorld(email:self.emailAddress, password:self.password, username: self.username)
                     }
-                    else if let user = user {
-                        let changeRequest = user.user.createProfileChangeRequest()
-                        changeRequest.displayName = self.username
-                        self.flag = true
-                        changeRequest.commitChanges { (error) in
-                            if let error = error{
-                                print(error.localizedDescription)
-                            }else{
-                            }
-                        }
+                    else{
+                        self.errorText = "Please Agree to the Terms and Condition"
                     }
-                }
-                if(!self.verified!){
-                    Firebase.Auth.auth().currentUser!.sendEmailVerification()
-                }
                 }) {
-                Text("確認メールを送る")
-            }
-            NavigationLink(destination: ContentView(), isActive: $flag ) { EmptyView()
-            }
-            Spacer()
-            }
-        }
+                    
+                    Text("Sign Up")
+                    
+                }
+                
+                Text(errorText).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
+                
+                actIndSignup(shouldAnimate: self.$shouldAnimate)
+                
+                Spacer()
+                
+            }.padding(10)
+            
+        }.edgesIgnoringSafeArea(.top).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading).background(Color.white)
+            
+            
+            .alert(isPresented: $showAlert, content: { self.alert })
         
     }
     
     
-//           VStack {
-//            Text("メールアドレスを入力して下さい")
-//                .font(.system(size: 25))
-//
-//            HStack {
-//                TextField(" Enter some text", text: $maill)
-//                    .border(Color.black)
-//                    .font(.system(size: 25))
-//                .padding()
-//            }
-//
-//            Text("パスワードを入力して下さい")
-//                .font(.system(size: 25))
-//
-//
-//            HStack {
-//                TextField(" Enter some text", text: $password)
-//                    .border(Color.black)
-//                    .font(.system(size: 25))
-//                .padding()
-//            }
-//
-//            Button(action: {
-//                self.isShown = true
-//            }) {
-//                Text("Sign Up")
-//                    .font(.system(size: 25))
-//            }
-////            .actionSheet(isPresented: $isShown, content: {
-////                            ActionSheet(
-////                                title: Text("サインしますか"),
-////                                buttons: [
-////                                    .default(Text("はい")),
-////                              .destructive(Text("いいえ")),
-////                              .cancel()]
-////                        )
-////                    })
-//        }
-//    }
+    func sayHelloWorld(email: String, password: String, username: String) {
+        let db = Firestore.firestore()
+        
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            
+            guard let user = authResult?.user, error == nil else {
+                
+                let errorText: String  = error?.localizedDescription ?? "unknown error"
+                self.errorText = errorText
+                
+                return
+            }
+            
+            Auth.auth().currentUser?.sendEmailVerification { (error) in
+                if let error = error {
+                    self.errorText = error.localizedDescription
+                    return
+                }
+                self.showAlert.toggle()
+                let uid = Auth.auth().currentUser?.uid
+                db.collection("users").document(uid!).setData(["name":username,"uid":uid!]) { (err) in
+                    
+                    if err != nil{
+                        
+                        print((err?.localizedDescription)!)
+                        return
+                    }
+                    
+                    UserDefaults.standard.set(true, forKey: "status")
+                    
+                    UserDefaults.standard.set(username, forKey: "UserName")
+                    
+                    UserDefaults.standard.set(uid, forKey: "UID")
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
+                }
+                self.shouldAnimate = false
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                changeRequest?.displayName = username
+                changeRequest?.commitChanges { (error) in
+                    if let error = error {
+                        self.errorText = error.localizedDescription
+                        return
+                    }
+                }
+                
+            }
+            
+            print("\(user.email!) created")
+            
+        }
+        
+        
+    }
+    
+    
 }
-
-           //.padding()
-           //.font(.title)
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView()
     }
 }
-
