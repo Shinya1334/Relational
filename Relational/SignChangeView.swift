@@ -40,48 +40,53 @@ struct SignChangeView: View {
         VStack {
             Text("Profile")
                 .fontWeight(.heavy).font(.largeTitle).padding([.top,.bottom], 20)
+            
             VStack(spacing: 10){
-                Text("User name").font(.title)
+                Text("User name : \(UserDefaults.standard.value(forKey: "UserName")as! String)").font(.title)
+                Text("email addressd : \((self.currentuser?.email)!)")
+            
                 TextField("\(UserDefaults.standard.value(forKey: "UserName")as! String)", text: $newdispname)
                 Divider()
-                Text("email addressd").font(.title)
                 TextField("\((self.currentuser?.email)!)", text: $emailAddress)
                 Divider()
             }
-            Text("now Password").font(.title).fontWeight(.thin)
-                .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
-            
-            SecureField("Enter a password", text: $password)
-            
-            Button(action: {
+            VStack{
+//                Text("now Password").font(.title).fontWeight(.thin)
+//                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
+                Text("now Password").font(.title)
                 
-                Auth.auth().sendPasswordReset(withEmail: self.emailAddress) { error in
-                    if let error = error {
-                        self.errorText = error.localizedDescription
-                        return
+                SecureField("Enter a password", text: $password)
+                Divider()
+                Button(action: {
+                    
+                    Auth.auth().sendPasswordReset(withEmail: (self.currentuser?.email)!) { error in
+                        if let error = error {
+                            self.errorText = error.localizedDescription
+                            return
+                        }
+                        self.showPasswordAlert.toggle()
                     }
-                    self.showPasswordAlert.toggle()
                 }
-            }
-            ) {
-                Text("change Password")
-            }
-            Button(action: {
-                if(self.willChange){
-                    self.SignChange(email:self.emailAddress, username: self.newdispname, pass: self.password)
+                ) {
+                    Text("change Password")
                 }
-            })
-            {
-                Text("change Profile")
-            }.alert(isPresented: $showSuccessAlert,content: {self.successAlert})
-            Text(errorText).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
-            
-            
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            })
-            {
-                Text("Back Home")
+                Button(action: {
+                    if(self.willChange){
+                        self.SignChange(email:self.emailAddress, username: self.newdispname, pass: self.password)
+                    }
+                })
+                {
+                    Text("change Profile")
+                }.alert(isPresented: $showSuccessAlert,content: {self.successAlert})
+                Text(errorText).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
+                
+                
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                })
+                {
+                    Text("Back Home")
+                }
             }
         }
     }
