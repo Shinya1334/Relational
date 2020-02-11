@@ -47,7 +47,14 @@ struct ContentView: View {
 
                     VStack(spacing:20) {
                         
-                        Image("icon").resizable().frame(width: 100, height: 100).padding(.top,60)
+                        Button(action: {self.signUpIsPresent = true}){
+                            Text("Sign Up")
+                            
+                        }.sheet(isPresented: self.$signUpIsPresent){
+                            
+                            SignUpView()
+                        }
+                        
                         Button(action: {self.signInIsPresent = true}){
                             
                             Text("Sign In").foregroundColor(.white).frame(width: UIScreen.main.bounds.width - 120).padding()
