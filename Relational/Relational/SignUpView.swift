@@ -55,11 +55,11 @@ struct SignUpView: View {
                 Text("Email").font(.title).fontWeight(.thin)
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
                 
-                    TextField("user@domain.com", text: $emailAddress).textContentType(.emailAddress)
-                    
-                    Divider()
+                TextField("user@domain.com", text: $emailAddress).textContentType(.emailAddress)
+                
+                Divider()
                 VStack{
-
+                    
                     Text("Password").font(.title).fontWeight(.thin)
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
                     
@@ -67,43 +67,43 @@ struct SignUpView: View {
                     
                     Divider()
                     VStack{
-                    Text("displayName").font(.title).fontWeight(.thin)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
-                    
-                    TextField("displayname", text: $username)
+                        Text("displayName").font(.title).fontWeight(.thin)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
+                        
+                        TextField("displayname", text: $username)
                         Divider()
-                        .padding(.bottom)
-                    
-                    
-                    Toggle(isOn: $agreeCheck)
-                    {
-                        Text("Agree to the Terms and Condition").fontWeight(.thin)
+                            .padding(.bottom)
                         
-                    }.frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
-                    
-                    Button(action: {
                         
-                        if(self.agreeCheck){
-                            print("Printing outputs" + self.emailAddress, self.password  )
-                            self.shouldAnimate = true
-                            self.SignUp(email:self.emailAddress, password:self.password, username: self.username)
-                        }
-                        else{
-                            self.errorText = "Please Agree to the Terms and Condition"
-                        }
-                    }) {
+                        Toggle(isOn: $agreeCheck)
+                        {
+                            Text("Agree to the Terms and Condition").fontWeight(.thin)
+                            
+                        }.frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
                         
-                        Text("Sign Up").foregroundColor(.white).frame(width: UIScreen.main.bounds.width - 120).padding()
+                        Button(action: {
+                            
+                            if(self.agreeCheck){
+                                print("Printing outputs" + self.emailAddress, self.password  )
+                                self.shouldAnimate = true
+                                self.SignUp(email:self.emailAddress, password:self.password, username: self.username)
+                            }
+                            else{
+                                self.errorText = "Please Agree to the Terms and Condition"
+                            }
+                        }) {
+                            
+                            Text("Sign Up").foregroundColor(.white).frame(width: UIScreen.main.bounds.width - 120).padding()
+                            
+                        }.background(Color("SignUp_color"))
+                            .clipShape(Capsule())
+                            .padding(.top, 45)
                         
-                    }.background(Color("SignUp_color"))
-                    .clipShape(Capsule())
-                    .padding(.top, 45)
-                    
                         Text(errorText).frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading).foregroundColor(.red)
-                        .padding(10)
-                    
-                    actIndSignup(shouldAnimate: self.$shouldAnimate)
-                }
+                            .padding(10)
+                        
+                        actIndSignup(shouldAnimate: self.$shouldAnimate)
+                    }
                 }
                 Spacer()
                 
