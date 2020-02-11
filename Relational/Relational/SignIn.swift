@@ -92,8 +92,6 @@ struct SignIn: View {
                         self.showPasswordAlert.toggle()
                         
                     }
-                    
-                    
                 }
                 ) {
                     Text("Forgot Password")

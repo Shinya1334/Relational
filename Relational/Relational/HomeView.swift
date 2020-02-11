@@ -48,7 +48,7 @@ struct HomeView : View {
 
                 })
         ).sheet(isPresented: self.$show){
-            newChatView()
+            SignChangeView()
         }
     }
     }

@@ -52,7 +52,6 @@ struct ContentView: View {
                         }.sheet(isPresented: self.$signUpIsPresent){
                             
                             SignUpView()
-                            
                         }
                         
                         Button(action: {self.signInIsPresent = true}){
